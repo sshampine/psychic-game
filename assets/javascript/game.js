@@ -2,8 +2,9 @@
 		var loss = 0;
 		var guesses = 9;
 		var guessArray = [];
-		
-			randomWord();
+		var newGuess = true;
+			
+		randomWord();
 			
 			
 		
@@ -11,9 +12,13 @@
 			
 			var userInput = event.key;
 			
-
+			for (var i =  0; i < guessArray.length; i++) {
+				if (userInput === guessArray[i]) {
+					newGuess = false;
+				}
+			}
 			
-			
+		if (newGuess) {
 			if (userInput === randomLetter) {
 				wins++;
 				winCount();
@@ -21,7 +26,6 @@
 				randomWord();
 				
 			} else {
-				
 				guesses--;	
 				guessesLeft();			
 				guessArray.push(userInput);
@@ -30,7 +34,10 @@
 				
 			}
 		
-
+		} else {
+			newGuess = true;
+		}
+			
 			if (guesses === 0) {
 				loss++;
 				lossCount();
