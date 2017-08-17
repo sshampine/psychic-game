@@ -4,13 +4,13 @@
 		var guessArray = [];
 
 			randomWord();
-			console.log(randomLetter);
+			
 			
 		
 		document.onkeyup = function(event) {
 			
 			var userInput = event.key;
-			console.log(userInput);
+			
 
 			
 			if (userInput === randomLetter) {
@@ -18,14 +18,14 @@
 				winCount();
 				resetStats();
 				randomWord();
-				console.log("new letter: " + randomLetter);
-			} else {
+				
+			} else if (guessArray.indexOf(userInput) !== -1 || userInput !== randomLetter){
 				guesses--;	
 				guessesLeft();			
 				guessArray.push(userInput);
 				j = guessArray.join(", ")
 				document.getElementById("status").innerHTML = "Your guesses so far: " + j;
-				console.log("your guess: " + j);
+				
 			}
 
 			if (guesses === 0) {
@@ -33,17 +33,12 @@
 				lossCount();
 				resetStats();
 				randomWord();
-				console.log("new letter: " + randomLetter);
+				
 			}
 			
 	};
 
-	 	function writeResults(test1, test2) {
-	 		document.getElementById("win").innerHTML = test1;
-	 		document.getElementById("loss").innerHTML =test2;
-	 		console.log(test1);
-	 		console.log(test2);
-	 	}
+	 	
 
 	 	function resetStats(){
 	 		guesses = 9;
