@@ -2,7 +2,7 @@
 		var loss = 0;
 		var guesses = 9;
 		var guessArray = [];
-
+		
 			randomWord();
 			
 			
@@ -13,13 +13,15 @@
 			
 
 			
+			
 			if (userInput === randomLetter) {
 				wins++;
 				winCount();
 				resetStats();
 				randomWord();
 				
-			} else if (guessArray.indexOf(userInput) !== -1 || userInput !== randomLetter){
+			} else {
+				
 				guesses--;	
 				guessesLeft();			
 				guessArray.push(userInput);
@@ -27,6 +29,7 @@
 				document.getElementById("status").innerHTML = "Your guesses so far: " + j;
 				
 			}
+		
 
 			if (guesses === 0) {
 				loss++;
